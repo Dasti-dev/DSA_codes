@@ -1,3 +1,4 @@
+// Online C++ compiler to run C++ program online
 #include <iostream>
 using namespace std;
 
@@ -92,6 +93,26 @@ int middle1 ( Node* head )
     }
     return slow->data;
 }
+//middle by length method
+int middle2 ( Node* head )
+{
+    Node* tmp = head;
+    int count = 1;
+    while( tmp -> next != NULL )
+    {
+        tmp = tmp -> next;
+        count++;
+    }
+    Node* reach = head;
+    {
+        count = count / 2;
+        while( count-- )
+        {
+            reach = reach -> next;
+        }
+    }
+    return reach->data;
+}
 int main() {
     Node* mid = new Node(1);
     //making a linked list
@@ -109,6 +130,7 @@ int main() {
     reverse1(mid);
     print(mid);
     cout << middle1(mid) << endl;
+    cout << middle2(mid) << endl;
     // reverse using recusion
     Node* curr = mid;
     Node* prev = NULL;
@@ -118,5 +140,6 @@ int main() {
     print(start);
     //middle of linked list
     cout << middle1(start) << endl;
+    cout << middle2(start) << endl;
     return 0;
 }
